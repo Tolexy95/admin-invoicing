@@ -1,0 +1,34 @@
+[
+  {
+    "firstName": "John",
+    "lastName": "Doe",
+    "company": "Acme Corp",
+    "email": "john.doe@example.com",
+    "phone": 8101017945,
+    "id": "V1StGXR8_Z5jdHi6B-myT"
+  },
+  {
+    "firstName": "Jane",
+    "lastName": "Smith",
+    "company": "Globex Inc",
+    "email": "jane.smith@example.com",
+    "phone": 8101017945,
+    "id": "mJt1Yq2A9WlG0ErF9kXvZ"
+  },
+  {
+    "firstName": "Oluwatoyin",
+    "lastName": "Olubayo",
+    "company": "Heirs Technologies",
+    "email": "toyin95.olubayo@gmail.com",
+    "phone": 8101017945,
+    "id": "PPTCOqAWAOJ_uoThI5PVs"
+  },
+  {
+    "firstName": "Oluwatoyin",
+    "lastName": "Olubayo",
+    "company": "Acme Corpkkkttt",
+    "email": "toyin95.olubayo@gmail.com",
+    "phone": 8101017945,
+    "id": "JzP4SbRRsNJCWrpaubNrl"
+  }
+]

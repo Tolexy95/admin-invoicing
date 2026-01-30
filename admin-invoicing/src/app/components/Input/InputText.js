@@ -8,7 +8,10 @@ export default function InputText({
     label,
     className,
     readonly,
+    maxLength,
     placeholder,
+    min,
+    max,
     readOnly = false,
     ...props
 }) {
@@ -30,16 +33,21 @@ export default function InputText({
                     <div className={`relative w-full rounded-md ${className}`}>
                         <input
                             type={props.type === 'password' && showPassword === true ? 'text' : props.type}
-                            className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary
+                            className={`w-full px-3 py-2 placeholder:text-xs  border rounded-md focus:outline-none focus:ring-2 focus:ring-primary
                 ${meta.touched && meta.error ? "border-red-500" : "border-gray-300"}`}
                             readOnly={readonly}
-                            placeholder={props.placeholder}
+                            placeholder={placeholder}
+                            maxLength={maxLength}
+                            min={min}
+                            max={max}
                             onChange={(e) => {
                                 field.onChange(e);
                                 if (props.onChange) {
                                     props.onChange(e);
                                 }
                             }}
+
+
                             {...field}
 
                         />

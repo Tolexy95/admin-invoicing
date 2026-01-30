@@ -10,25 +10,35 @@ export const clientValidationSchema = Yup.object({
     email: Yup.string()
     .required("Email is required")
     .matches(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, 'Must be a valid email'),
-    phone: Yup.string()
-    .required("Phone number is required"),
+   phone: Yup.string()
+    .required("Phone number is required")
+    .matches(/^(?:(080|081|090|070|091)[0-9]{8})$/, 'Must match the specified format'),
 });
 
-// export const loginValidation = Yup.object({
-//   email: Yup.string()
-//     .required('Email is required!')
-//     .matches(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, 'Must be a valid email'),
-//   password: Yup.string().required('Password is required!'),
-// });
 
-// export const passwordResetValidation = Yup.object({
-//   newPassword: Yup.string()
-//     .required('Password is required')
-//     .matches(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#?'\-_$.%^&*)(|~=+}{,;:~</>[\]`])/, 'Password is weak, See specifications below'),
-//   confirmPassword: Yup.string()
-//     .required('Confirm your chosen password')
-//     .oneOf([Yup.ref('newPassword')], 'Passwords must match'),
-// });
+
+export const loginValidation = Yup.object({
+  email: Yup.string()
+    .required('Email is required!')
+    .matches(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, 'Must be a valid email'),
+  password: Yup.string()
+    .required('Password is required!')
+    .matches(/[A-Z]/, 'At least one uppercase letter')
+    .matches(/[a-z]/, 'At least one lowercase letter')
+    .matches(/[0-9]/, 'At least one digit (number)')
+    .matches(/(?=.*)[!@#?'\-_$.%^&*)(|~=+}{,;:~</>[\]`]/, 'At least one special character')
+    .matches(/^.{8,}$/, 'At least 8 characters'),
+});
+
+
+export const passwordResetValidation = Yup.object({
+  newPassword: Yup.string()
+    .required('Password is required')
+    .matches(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#?'\-_$.%^&*)(|~=+}{,;:~</>[\]`])/, 'Password is weak, See specifications below'),
+  confirmPassword: Yup.string()
+    .required('Confirm your chosen password')
+    .oneOf([Yup.ref('newPassword')], 'Passwords must match'),
+});
 
 
 // export const passwordChangeValidation = Yup.object({

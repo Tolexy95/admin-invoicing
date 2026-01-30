@@ -1,5 +1,7 @@
 import './globals.css'
 import { dmSans } from '@/app/ui/fonts'
+import { AuthProvider } from './context/AuthContext'
+import { Toaster } from 'react-hot-toast'
 
 export const metadata = {
   title: 'Heirs Technologies E-invoicing',
@@ -10,7 +12,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={`${dmSans.className} antialiased`}>
-        {children}
+        <AuthProvider>
+          {children}
+          <Toaster position="top-right" reverseOrder={false} />
+        </AuthProvider>
       </body>
     </html>
   )

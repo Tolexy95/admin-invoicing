@@ -33,9 +33,13 @@ export async function POST(req) {
     const clients = await readClients();
 
     // Assign a unique ID using nanoid
-    const clientWithId = { ...newClient, id: nanoid() };
+    const clientWithId = {
+      ...newClient,
+      id: nanoid(),
+      createdAt: newClient.createdAt || new Date().toISOString(),
+    };
 
-    clients.push(clientWithId);
+    clients.unshift(clientWithId); // keep newest first
     await writeClients(clients);
 
     return new Response(JSON.stringify(clientWithId), { status: 201 });
@@ -65,6 +69,27 @@ export async function PUT(req) {
     console.error("Failed to update client:", err);
     return new Response(
       JSON.stringify({ error: "Failed to update client" }),
+      { status: 500 }
+    );
+  }
+}
+
+// DELETE /api/clients - delete a client
+export async function DELETE(req) {
+  try {
+    const { id } = await req.json(); 
+    if (!id) throw new Error("Missing client ID");
+
+    const clients = await readClients();
+    const updatedClients = clients.filter((c) => c.id !== id);
+
+    await writeClients(updatedClients);
+
+    return new Response(JSON.stringify({ success: true }), { status: 200 });
+  } catch (err) {
+    console.error("Failed to delete client:", err);
+    return new Response(
+      JSON.stringify({ error: "Failed to delete client" }),
       { status: 500 }
     );
   }

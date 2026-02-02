@@ -4,6 +4,7 @@ import { Formik, Form } from "formik";
 import InputText from "@/app/components/Input/InputText";
 import { passwordResetValidation } from "../utils/validation";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 export default function ForgotPasswordPage() {
   const router = useRouter();
@@ -18,10 +19,17 @@ export default function ForgotPasswordPage() {
         <Formik
           initialValues={{ email: "" }}
           validationSchema={passwordResetValidation}
-          onSubmit={() => {
-            // fake submit
-            router.push("/login");
+          onSubmit={(values) => {
+
+            // Since there is no API yet, I am simulating a successful password reset request
+            toast.success(`Password reset link sent to ${values.email}`);
+
+            // Redirecting back to login after showing success message
+            setTimeout(() => {
+              router.push("/login");
+            }, 1500);
           }}
+
         >
           <Form className="space-y-4">
             <InputText

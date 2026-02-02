@@ -14,12 +14,13 @@ import {
 
 const links = [
   { name: "Dashboard", href: "/adminDashboard/dashboard", icon: LayoutDashboard },
+  { name: "Clients", href: "/adminDashboard/client", icon: Users },
   { name: "Activity", href: "/adminDashboard/activity", icon: Activity },
   { name: "Security", href: "/adminDashboard/security", icon: ShieldCheck },
   { name: "Schedules", href: "/adminDashboard/schedules", icon: Calendar },
   { name: "Payouts", href: "/adminDashboard/payouts", icon: Wallet },
   { name: "Settings", href: "/adminDashboard/settings", icon: Settings },
-  // { name: "Clients", href: "/adminDashboard/client", icon: Users },
+  
 ];
 
 export default function NavLinks() {

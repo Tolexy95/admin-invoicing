@@ -26,3 +26,100 @@ input[type='number']::-webkit-outer-spin-button {
 *::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Edge */
 }
+
+
+
+@layer base {
+  :root {
+    /* App background & text */
+    --background: 220 100% 98%;              /* close to secondary-grey-300 (#F4F7FE) */
+    --foreground: 226 36% 26%;               /* close to secondary-grey-900 (#2B3674) */
+
+    /* Cards / surfaces */
+    --card: 0 0% 100%;
+    --card-foreground: 226 36% 26%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 226 36% 26%;
+
+    /* Primary*/
+    --primary: 226 100% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary */
+    --secondary: 220 100% 96%;               /* close to secondary-grey-400 */
+    --secondary-foreground: 226 36% 26%;
+
+    /* Muted / subtle */
+    --muted: 220 100% 96%;
+    --muted-foreground: 220 10% 50%;         /* close to secondary-grey-700 */
+
+    --accent: 220 100% 96%;
+    --accent-foreground: 226 36% 26%;
+
+    /* Destructive */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Borders & inputs */
+    --border: 220 20% 90%;                   /* close to secondary-grey-400 */
+    --input: 220 20% 90%;
+    --ring: 226 100% 60%;
+
+    /* Charts */
+    --chart-1: 226 100% 60%;
+    --chart-2: 220 10% 50%;
+    --chart-3: 173 58% 39%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 226 36% 10%;
+    --foreground: 0 0% 98%;
+
+    --card: 226 36% 12%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 226 36% 12%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 226 100% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 226 36% 16%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 226 36% 16%;
+    --muted-foreground: 220 10% 70%;
+
+    --accent: 226 36% 16%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 70% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 226 36% 20%;
+    --input: 226 36% 20%;
+    --ring: 226 100% 60%;
+
+    --chart-1: 226 100% 60%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}

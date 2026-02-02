@@ -51,7 +51,7 @@ export default function SpendingBarChart() {
       </div>
 
       {/* Chart */}
-      <div className="w-full h-52">
+      <div className="w-full h-52 min-w-0 min-h-[200px]">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart
             data={monthlySpending}

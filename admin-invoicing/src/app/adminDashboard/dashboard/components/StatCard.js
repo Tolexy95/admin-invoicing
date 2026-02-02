@@ -13,8 +13,8 @@ export default function StatCard({
   return (
     <div
       className={`relative rounded-[20px] p-4 shadow-sm transition ${highlight
-          ? "bg-gradient-to-r from-[#868CFF] to-[#4318FF] text-white"
-          : "bg-white"
+        ? "bg-gradient-to-r from-[#868CFF] to-[#4318FF] text-white"
+        : "bg-white"
         } ${className}`}
     >
       <div className="flex items-center justify-between">
@@ -29,7 +29,12 @@ export default function StatCard({
                   width={img.width || 42}
                   height={img.height || 38}
                   className={img.className || ""}
+                  style={{
+                    width: img.width ? `${img.width}px` : "auto",
+                    height: img.height ? `${img.height}px` : "auto",
+                  }}
                 />
+
               </div>
             ))}
           </div>
@@ -56,6 +61,10 @@ export default function StatCard({
                   width={img.width || 58}
                   height={img.height || 28}
                   className={img.className || ""}
+                  style={{
+                    width: img.width ? `${img.width}px` : "auto",
+                    height: img.height ? `${img.height}px` : "auto",
+                  }}
                 />
               </div>
             ))}

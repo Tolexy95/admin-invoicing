@@ -1,3 +1,6 @@
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+
 const schedule = [
   {
     title: "Meet w/ Simmmple",
@@ -15,30 +18,28 @@ const schedule = [
 
 export default function Schedule() {
   return (
-    <div className="rounded-xl bg-white p-6 shadow-sm">
-      <div className="mb-4 flex items-center justify-between">
-        <h3 className="text-sm font-medium">
-          27 May
-        </h3>
-        <button className="text-sm text-indigo-600">
-          View all Tasks
-        </button>
-      </div>
+    <div className="rounded-xl bg-white p-6 shadow-sm flex flex-col justify-between h-full">
+      {/* Date */}
+      <h3 className="text-3xl font-bold text-secondary-darkGrey-900 mb-4">27 May</h3>
 
-      <div className="space-y-4">
+      {/* Schedule Items */}
+      <div className="space-y-4 flex-1">
         {schedule.map((item, index) => (
-          <div
-            key={index}
-            className="border-l-4 border-indigo-600 pl-3"
-          >
-            <p className="text-sm font-medium">
-              {item.title}
-            </p>
-            <p className="text-xs text-gray-400">
-              {item.time}
-            </p>
+          <div key={index} className="border-l-4 border-primary pl-3">
+            <p className="text-base font-bold text-secondary-darkGrey-900">{item.title}</p>
+            <p className="text-xs text-secondary-grey-600 font-medium">{item.time}</p>
           </div>
         ))}
+      </div>
+
+      {/* View All Tasks Button */}
+      <div className="mt-4 flex justify-end">
+        <Link
+          href="/adminDashboard/schedules"
+          className="text-base text-primary flex font-bold items-center gap-1 hover:underline"
+        >
+          View all Tasks <ArrowRight size={18} />
+        </Link>
       </div>
     </div>
   );

@@ -10,6 +10,7 @@ export default function SearchBox() {
           alt="search"
           width={11}
           height={11}
+          style={{ width: "11px", height: "auto" }}
         />
       </div>
 

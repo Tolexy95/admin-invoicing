@@ -32,12 +32,9 @@ export const loginValidation = Yup.object({
 
 
 export const passwordResetValidation = Yup.object({
-  newPassword: Yup.string()
-    .required('Password is required')
-    .matches(/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[!@#?'\-_$.%^&*)(|~=+}{,;:~</>[\]`])/, 'Password is weak, See specifications below'),
-  confirmPassword: Yup.string()
-    .required('Confirm your chosen password')
-    .oneOf([Yup.ref('newPassword')], 'Passwords must match'),
+  email: Yup.string()
+    .required('Email is required!')
+    .matches(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, 'Must be a valid email'),
 });
 
 

@@ -3,42 +3,51 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
+// Create a context for authentication so we can use it anywhere
 export const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState(null); // store logged-in user
+  const [loading, setLoading] = useState(true); // loading state while checking login
   const router = useRouter();
 
-  // Check login on refresh
+  // Check if user is already logged in on page refresh
   useEffect(() => {
-    const storedUser = localStorage.getItem("user");
+    const storedUser = localStorage.getItem("user"); // get user from localStorage
     if (storedUser) {
-      setUser(JSON.parse(storedUser));
+      setUser(JSON.parse(storedUser)); // set the user if found
     }
-    setLoading(false);
+    setLoading(false); // finished checking
   }, []);
 
-  // Fake login
-  const login = ({ email, password, remember }) => {
-    // temporary fake auth rule
-    if (email && password) {
-      const fakeUser = { email };
+  // Login function to validate email and password
+  const login = async ({ email, password, remember }) => {
+    // For now, hardcoding a valid user for testing
+    const validUser = { email: "toyin95.olubayo@gmail.com", password: "Ifeoluwa@95" };
 
-      setUser(fakeUser);
+    // Check if entered email and password match
+    if (email === validUser.email && password === validUser.password) {
+      const authUser = { email }; // store minimal user info
+      setUser(authUser);
 
+      // Remember user in localStorage if checkbox is ticked
       if (remember) {
-        localStorage.setItem("user", JSON.stringify(fakeUser));
+        localStorage.setItem("user", JSON.stringify(authUser));
       }
 
-       router.push("/adminDashboard/dashboard")
+      router.push("/adminDashboard/dashboard"); // navigate to dashboard after login
+      return true;
+    } else {
+      // throw error if credentials are wrong
+      throw new Error("Invalid credentials");
     }
   };
 
+  // Logout function to clear user data and redirect to login
   const logout = () => {
-    setUser(null);
-    localStorage.removeItem("user");
-    router.push("/login");
+    setUser(null); // clear user from state
+    localStorage.removeItem("user"); // remove user from localStorage
+    router.push("/login"); // go back to login page
   };
 
   return (
@@ -46,6 +55,7 @@ export function AuthProvider({ children }) {
       {children}
     </AuthContext.Provider>
   );
-}
+};
 
+// Hook to use auth anywhere
 export const useAuth = () => useContext(AuthContext);

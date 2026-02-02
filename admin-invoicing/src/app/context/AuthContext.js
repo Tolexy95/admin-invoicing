@@ -3,12 +3,12 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
-// Create a context for authentication so we can use it anywhere
+
 export const AuthContext = createContext();
 
 export function AuthProvider({ children }) {
-  const [user, setUser] = useState(null); // store logged-in user
-  const [loading, setLoading] = useState(true); // loading state while checking login
+  const [user, setUser] = useState(null); 
+  const [loading, setLoading] = useState(true); 
   const router = useRouter();
 
   // Check if user is already logged in on page refresh
@@ -17,7 +17,7 @@ export function AuthProvider({ children }) {
     if (storedUser) {
       setUser(JSON.parse(storedUser)); // set the user if found
     }
-    setLoading(false); // finished checking
+    setLoading(false); 
   }, []);
 
   // Login function to validate email and password
@@ -27,7 +27,7 @@ export function AuthProvider({ children }) {
 
     // Check if entered email and password match
     if (email === validUser.email && password === validUser.password) {
-      const authUser = { email }; // store minimal user info
+      const authUser = { email }; 
       setUser(authUser);
 
       // Remember user in localStorage if checkbox is ticked
@@ -45,9 +45,9 @@ export function AuthProvider({ children }) {
 
   // Logout function to clear user data and redirect to login
   const logout = () => {
-    setUser(null); // clear user from state
-    localStorage.removeItem("user"); // remove user from localStorage
-    router.push("/login"); // go back to login page
+    setUser(null); 
+    localStorage.removeItem("user"); 
+    router.push("/login"); 
   };
 
   return (
@@ -57,5 +57,4 @@ export function AuthProvider({ children }) {
   );
 };
 
-// Hook to use auth anywhere
 export const useAuth = () => useContext(AuthContext);

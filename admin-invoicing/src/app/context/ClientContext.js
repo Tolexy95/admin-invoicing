@@ -3,14 +3,13 @@
 import { createContext, useState, useEffect } from "react";
 import toast from "react-hot-toast";
 
-// Creating global context for clients
 export const ClientContext = createContext();
 
 export const ClientProvider = ({ children }) => {
   const [clients, setClients] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [selectedClient, setSelectedClient] = useState(null);
-  const [viewClient, setViewClient] = useState(null); // <-- added global view client
+  const [viewClient, setViewClient] = useState(null); 
 
   // Load clients from API on mount
   useEffect(() => {

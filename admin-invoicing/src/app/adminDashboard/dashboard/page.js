@@ -1,6 +1,6 @@
 "use client";
 
-import { useContext } from "react"; // needed for ClientContext
+import { useContext } from "react"; 
 
 import StatCard from "./components/StatCard";
 import SpendingBarChart from "./components/SpendingBarChart";
@@ -35,13 +35,12 @@ export default function DashboardPage() {
       {/* Stats */}
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
         {stats.map((item) => {
-          // If card is "New clients", use real clients length instead of static value
           if (item.title === "New clients") {
             return (
               <StatCard
                 key={item.title}
                 {...item}
-                value={clients?.length || 0} // real number of clients
+                value={clients?.length || 0} 
               />
             );
           }

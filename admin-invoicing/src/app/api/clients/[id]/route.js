@@ -16,14 +16,12 @@ async function writeClients(clients) {
 
 export async function DELETE(req, { params }) {
   try {
-    // 🚨 Must await params because App Router treats it as a promise
     const { id } = await params;
 
     console.log("Deleting client ID:", id);
 
     const clients = await readClients();
 
-    // Make sure both sides are strings so matching works
     const updatedClients = clients.filter((c) => String(c.id) !== String(id));
 
     await writeClients(updatedClients);

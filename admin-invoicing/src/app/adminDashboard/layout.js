@@ -13,17 +13,17 @@ export default function DashboardLayout({ children }) {
   // Protect the route: redirect to login if not logged in
   useEffect(() => {
     if (!loading && !user) {
-      // if not loading and no user is logged in
-      router.push("/login"); // send user to login page
+      
+      router.push("/login"); 
     }
   }, [loading, user, router]);
 
-  // While auth is loading, show nothing or a loader
+ 
   if (loading || !user) {
     return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
   }
 
-  // Wrap children with ClientProvider and SideNav
+  
   return (
     <ClientProvider>
       <div className="flex min-h-screen bg-secondary-grey-300">

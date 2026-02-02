@@ -14,7 +14,7 @@ export default function Logout() {
       {/* Icon */}
       <LogOut className="h-4 w-4 shrink-0" />
 
-      {/* Text – visible only when sidebar is expanded */}
+      
       <span className="hidden md:inline">
         Log Out
       </span>

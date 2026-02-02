@@ -10,14 +10,14 @@ import toast from "react-hot-toast";
 import { useState } from "react";
 
 export default function LoginPage() {
-  const { login } = useAuth(); // get login function from context
+  const { login } = useAuth(); 
   const router = useRouter();
-  const [remember, setRemember] = useState(false); // state for "remember me" checkbox
-  const [loading, setLoading] = useState(false); // show loading while logging in
+  const [remember, setRemember] = useState(false); 
+  const [loading, setLoading] = useState(false); 
 
   // Function that runs when form is submitted
   const handleSubmit = async (values) => {
-    setLoading(true); // start loading
+    setLoading(true); 
     try {
       await login({ ...values, remember }); // pass email, password, and remember
       toast.success("Login successful!"); // show success message
@@ -25,7 +25,7 @@ export default function LoginPage() {
     } catch (err) {
       toast.error(err.message || "Login failed. Please check your credentials."); // show error message
     } finally {
-      setLoading(false); // stop loading
+      setLoading(false); 
     }
   };
 
@@ -34,8 +34,8 @@ export default function LoginPage() {
       email: "",
       password: "",
     },
-    validationSchema: loginValidation, // use Yup validation schema
-    onSubmit: handleSubmit, // handle submit
+    validationSchema: loginValidation, 
+    onSubmit: handleSubmit, 
   };
 
   return (
@@ -86,7 +86,7 @@ export default function LoginPage() {
               <div className="md:w-1/2 m-auto mt-5">
                 <Submit
                   formik={formik}
-                  textContent={loading ? "Logging in..." : "Login"} // show loading text
+                  textContent={loading ? "Logging in..." : "Login"} 
                   className={`mt-6 w-full`}
                   disabled={loading} // disable button while logging in
                 />

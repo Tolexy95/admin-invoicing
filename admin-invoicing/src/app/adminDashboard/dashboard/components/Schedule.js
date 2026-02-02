@@ -19,7 +19,7 @@ const schedule = [
 export default function Schedule() {
   return (
     <div className="rounded-xl bg-white p-6 shadow-sm flex flex-col justify-between h-full">
-      {/* Date */}
+
       <h3 className="text-3xl font-bold text-secondary-darkGrey-900 mb-4">27 May</h3>
 
       {/* Schedule Items */}

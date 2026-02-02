@@ -4,7 +4,7 @@ import { useContext, useState, useMemo } from "react";
 import { ClientContext } from "@/app/context/ClientContext";
 import Confirm from "@/app/components/modal/Confirm";
 import ClientModal from "@/app/components/modal/ClientModal";
-import toast from "react-hot-toast"; // toast
+import toast from "react-hot-toast"; 
 
 import {
   useReactTable,
@@ -28,8 +28,8 @@ export default function ClientsTable() {
   const [deleteClientId, setDeleteClientId] = useState(null);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   const [globalFilter, setGlobalFilter] = useState("");
-  const [statusFilter, setStatusFilter] = useState(""); // Active / Inactive
-  const [dateSort, setDateSort] = useState(""); // asc / desc
+  const [statusFilter, setStatusFilter] = useState("");
+  const [dateSort, setDateSort] = useState(""); 
 
   // Delete client handler
   const { deleteClient } = useContext(ClientContext);

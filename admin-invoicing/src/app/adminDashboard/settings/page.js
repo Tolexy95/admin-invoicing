@@ -17,10 +17,10 @@ export default function SettingsPage() {
   const formikAttributes = {
     enableReinitialize: true, // This allows Formik to pick up values when user becomes available
     initialValues: {
-      firstName: user?.firstName || "Oluwatoyin",
-      lastName: user?.lastName || "Olubayo",
+      firstName: user?.firstName || "Admin",
+      lastName: user?.lastName || "Demo",
       company: user?.company || "Heirs Technologies",
-      email: user?.email || "toyin95.olubayo@gmail.com",
+      email: user?.email || "admin.demo@company.com",
       phone: user?.phone || "08124568912",
     },
     onSubmit: (values) => {

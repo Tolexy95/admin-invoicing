@@ -23,7 +23,7 @@ export function AuthProvider({ children }) {
   // Login function to validate email and password
   const login = async ({ email, password, remember }) => {
     // For now, hardcoding a valid user for testing
-    const validUser = { email: "toyin95.olubayo@gmail.com", password: "Ifeoluwa@95" };
+    const validUser = { email: "admin.demo@company.com", password: "AdminDemo@123" };
 
     // Check if entered email and password match
     if (email === validUser.email && password === validUser.password) {

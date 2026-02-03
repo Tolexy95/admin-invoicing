@@ -42,7 +42,7 @@ export default function SpendingBarChart() {
         {/* Icon */}
         <div className="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center">
           <Image
-            src="/icon.png"
+            src="/Icon.png"
             alt="stats"
             width={16}
             height={16}

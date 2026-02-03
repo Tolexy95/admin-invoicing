@@ -17,7 +17,7 @@ export const stats = [
     title: "Earnings",
     value: "$350.40",
     highlight: false,
-    leftImages: [{ src: "/icon.png", alt: "Wallet Icon", width: 50.2}],
+    leftImages: [{ src: "/Icon.png", alt: "Wallet Icon", width: 50.2}],
   },
 
   {

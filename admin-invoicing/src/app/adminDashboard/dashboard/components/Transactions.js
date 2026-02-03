@@ -6,17 +6,17 @@ const transactions = [
   {
     title: "Public Transport",
     date: "22 September 2020",
-    icon: "/icon-2.png",
+    icon: "/Icon-2.png",
   },
   {
     title: "Grocery Store",
     date: "18 September 2020",
-    icon: "/icon-1.png",
+    icon: "/Icon-1.png",
   },
   {
     title: "Public Transport",
     date: "22 September 2020",
-    icon: "/icon-3.png",
+    icon: "/Icon-3.png",
   },
 ];
 

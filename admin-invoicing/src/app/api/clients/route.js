@@ -2,17 +2,31 @@ import { promises as fs } from "fs";
 import path from "path";
 import { nanoid } from "nanoid";
 
-const filePath = path.join(process.cwd(), "clients.json");
+// Use /tmp folder in Vercel for writable storage
+const filePath =
+  process.env.VERCEL === "1"
+    ? path.join("/tmp", "clients.json")
+    : path.join(process.cwd(), "clients.json");
 
-// Helper to read clients from the JSON file
+// Ensure the file exists before reading
+async function ensureFileExists() {
+  try {
+    await fs.access(filePath);
+  } catch {
+    await fs.writeFile(filePath, "[]", "utf-8");
+  }
+}
+
+// Helper to read clients
 async function readClients() {
+  await ensureFileExists();
   const data = await fs.readFile(filePath, "utf-8");
   return JSON.parse(data);
 }
 
-// Helper to write clients to the JSON file
+// Helper to write clients
 async function writeClients(clients) {
-  await fs.writeFile(filePath, JSON.stringify(clients, null, 2));
+  await fs.writeFile(filePath, JSON.stringify(clients, null, 2), "utf-8");
 }
 
 // GET /api/clients - fetch all clients
@@ -32,14 +46,13 @@ export async function POST(req) {
     const newClient = await req.json();
     const clients = await readClients();
 
-    // Assign a unique ID using nanoid
     const clientWithId = {
       ...newClient,
       id: nanoid(),
       createdAt: newClient.createdAt || new Date().toISOString(),
     };
 
-    clients.unshift(clientWithId); // keep newest first
+    clients.unshift(clientWithId); // newest first
     await writeClients(clients);
 
     return new Response(JSON.stringify(clientWithId), { status: 201 });
@@ -69,27 +82,6 @@ export async function PUT(req) {
     console.error("Failed to update client:", err);
     return new Response(
       JSON.stringify({ error: "Failed to update client" }),
-      { status: 500 }
-    );
-  }
-}
-
-// DELETE /api/clients - delete a client
-export async function DELETE(req) {
-  try {
-    const { id } = await req.json(); 
-    if (!id) throw new Error("Missing client ID");
-
-    const clients = await readClients();
-    const updatedClients = clients.filter((c) => c.id !== id);
-
-    await writeClients(updatedClients);
-
-    return new Response(JSON.stringify({ success: true }), { status: 200 });
-  } catch (err) {
-    console.error("Failed to delete client:", err);
-    return new Response(
-      JSON.stringify({ error: "Failed to delete client" }),
       { status: 500 }
     );
   }

@@ -26,13 +26,9 @@ export default function StatCard({
                 <Image
                   src={img.src}
                   alt={img.alt || `left-icon-${idx}`}
-                  width={img.width || 42}
-                  height={img.height || 38}
+                  width={Math.round(img.width || 42)}
+                  height={Math.round(img.height || 42)}
                   className={img.className || ""}
-                  style={{
-                    width: img.width ? `${img.width}px` : "auto",
-                    height: img.height ? `${img.height}px` : "auto",
-                  }}
                 />
 
               </div>
@@ -58,13 +54,9 @@ export default function StatCard({
                 <Image
                   src={img.src}
                   alt={img.alt || `right-icon-${idx}`}
-                  width={img.width || 58}
-                  height={img.height || 28}
+                  width={Math.round(img.width || 58)}
+                  height={Math.round(img.height || 28)}
                   className={img.className || ""}
-                  style={{
-                    width: img.width ? `${img.width}px` : "auto",
-                    height: img.height ? `${img.height}px` : "auto",
-                  }}
                 />
               </div>
             ))}

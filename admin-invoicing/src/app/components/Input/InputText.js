@@ -52,21 +52,15 @@ export default function InputText({
 
                         />
 
-                        {
-                            props.type === 'password' &&
-                            meta.value !== '' && (
-                                <label className="swap swap-rotate absolute p-2 right-2 top-1/2 -translate-y-1/2">
-                                    {/* this hidden checkbox controls the state */}
-                                    <input type="checkbox" onChange={passwordToggle} disabled={meta.value === ''} />
-
-                                    {/* password hidden */}
-                                    <EyeOff className="swap-on text-xl" />
-
-                                    {/* password showing */}
-                                    <Eye className="swap-off text-xl" />
-                                </label>
-                            )
-                        }
+                        {props.type === "password" && meta.value !== "" && (
+                            <button
+                                type="button"
+                                onClick={passwordToggle}
+                                className="absolute right-3 top-1/2 -translate-y-1/2 text-secondary-grey-600 hover:text-secondary-grey-700"
+                            >
+                                {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                            </button>
+                        )}
                     </div>
 
                     {meta.touched && meta.error && (
